@@ -1,0 +1,39 @@
+ALGORITHM SolutionHashTable
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    tab1,tab2,same : ARRAY_OF INTEGER[];
+    i,j, sum,sumcommun : INTEGER;
+BEGIN
+    i,j,sum,sumcommun := 0;
+
+    FOR i FROM 1 TO tab1.lenght STEP 1  DO
+        htab.insert(t1[i],1);
+    END_FOR
+
+    FOR j FROM 1 TO tab2 STEP 1  DO
+        IF (htab.lookup(tab2[j]) = true) THEN
+            htab.insert(tab2[j],2);
+        ELSE
+            htab.insert(tab2[j],1);
+        END_IF
+    END_FOR
+
+    FOR i FROM 1 TO tab1.lenght STEP 1  DO
+        IF (htab.get(tab1[i]) = 2) THEN
+            same[i] := tab1[i];
+            sumcommun := sumcommun = tab1[i]*2; //somme des elements en commun
+        ELSE
+            sum := sum +tab1[i]; // somme des elements distinct
+        END_IF
+    END_FOR
+
+    FOR j FROM 1 TO tab2.lenght STEP 1  DO
+        IF (htab.get(tab2[j]) = 1) THEN
+            sum := sum +tab2[j]; // somme des elements distinct du 2eme tableau
+        END_IF
+    END_FOR
+    
+    whrite("Sum of distinct elements:",sum);
+    whrite("Sum of overlapping elements:",sumcommun);
+    whrite("Common elements are:",same[])
+END

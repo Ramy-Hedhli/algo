@@ -1,0 +1,40 @@
+ALGORITHM SolutionArray
+VAR
+    tab1,tab2,same1 : ARRAY_OF INTEGER[];
+    i,j,sum,sumcommun : INTEGER;
+BEGIN
+    sum := 0;
+    i,j :=1;
+//pour trouver la somme des elements distinctes
+//en parcourant le premier tableau
+    FOR i FROM 1 TO tab1.length STEP 1  DO
+        WHILE (tab1[i]<>tab2[j]) DO
+            j:=j+1;
+            IF (j = tab2.lenght) THEN
+            sum:=sum + tab1[i];
+            END_IF
+        END_WHILE
+    END_FOR
+//en parcourant deuxième tableau
+    FOR j FROM 1 TO tab2.length STEP 1  DO
+        WHILE (tab2[j]<>tab1[i]) DO
+            i:=i+1;
+            IF (i = tab1.lenght) THEN
+            sum:=sum + tab2[j];
+            END_IF
+        END_WHILE
+    END_FOR
+//pour trouver les elements communs
+    FOR i FROM 1 TO tab1.lenght STEP 1  DO
+        FOR j FROM 1 TO tab2.max STEP 1  DO
+            IF (tab1[i]=tab2[j]) THEN
+                same[i] := tab1[i];  //tableau des elements en commun
+                sumcommun := sumcommun + tab1[i]*2;  // somme des elements en commun
+            END_IF
+        END_FOR
+    END_FOR
+
+    whrite("Sum of distinct elements:",sum);
+    whrite("Sum of overlapping elements:",sumcommun);
+    whrite("Common elements are:",same[])
+END
